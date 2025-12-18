@@ -1,0 +1,3 @@
+../Src/bus_spi.c:11:9:SPI1_TransmiReceive	3
+../Src/bus_spi.c:22:6:SPI1_ResetSS	1
+../Src/bus_spi.c:26:6:SPI1_SetSS	1

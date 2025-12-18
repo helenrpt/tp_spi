@@ -1,0 +1,29 @@
+#include <stdint.h>
+#include <stm32f446xx.h>
+#include "main.h"
+#include "gpio.h"
+#include "bus_spi.h"
+
+SPI_PINOUT mosiSPI1 = {GPIOA, 6};
+SPI_PINOUT misoSPI1 = {GPIOA, 7};
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData){
+	while(!(SPI1->SR & SPI_SR_TXE));  // TXE = 1 → prêt à transmettre
+	*((__IO uint8_t*)&SPI1->DR) = spiData;  // Ecriture 8 bits
+
+	while(!(SPI1->SR & SPI_SR_RXNE)); // RXNE = 1 → donnée reçue
+	return *((__IO uint8_t*)&SPI1->DR);
+
+}
+
+#define SX1272_CS_PORT GPIOB
+#define SX1272_CS_PIN  6
+
+void SPI1_ResetSS(void){
+    SX1272_CS_PORT->ODR &= ~(1U << SX1272_CS_PIN); // CS = 0
+}
+
+void SPI1_SetSS(void){
+    SX1272_CS_PORT->ODR |= (1U << SX1272_CS_PIN);  // CS = 1
+}

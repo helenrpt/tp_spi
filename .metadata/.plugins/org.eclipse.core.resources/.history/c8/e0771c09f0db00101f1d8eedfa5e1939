@@ -1,0 +1,25 @@
+#include <stdint.h>
+#include <stm32f446xx.h>
+#include "main.h"
+#include "gpio.h"
+
+SPI_PINOUT mosiSPI1 = {GPIOA, 6};
+SPI_PINOUT misoSPI1 = {GPIOA, 7};
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData){
+	SPI1->DR = spiData;
+	while(SPI1-> SR & SPI_SR_TXE_Msk);
+	while(SPI1-> SR & SPI_SR_RXNE_Msk);
+	return SPI1->DR;
+
+}
+
+void SPI1_ResetSS(void){
+	GPIO_ResetPin(pinPortSPI1->port , pinPortSPI1->pin);
+}
+
+/*
+void SPI1_ResetSS(void){
+
+}*/

@@ -1,0 +1,30 @@
+#include <stdint.h>
+#include <stm32f446xx.h>
+#include "main.h"
+#include "gpio.h"
+#include "bus_spi.h"
+
+SPI_PINOUT mosiSPI1 = {GPIOA, 6};
+SPI_PINOUT misoSPI1 = {GPIOA, 7};
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData){
+	SPI1->DR = spiData;
+	while(!(SPI1-> SR & SPI_SR_TXE_Msk));
+	while(!(SPI1-> SR & SPI_SR_RXNE_Msk));
+	return SPI1->DR;
+
+}
+
+
+/** Met NSS à 0 (actif bas)*/
+void SPI1_ResetSS(void)
+{
+    GPIOA->BSRR = (1 << (4 + 16));   // PA4 = 0
+}
+
+/**Mef Met NSS à 1*/
+void SPI1_SetSS(void)
+{
+    GPIOA->BSRR = (1 << 4);          // PA4 = 1
+}

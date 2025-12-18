@@ -1,0 +1,14 @@
+#ifndef BUS_SPI_H_
+#define BUS_SPI_H_
+
+typedef struct {
+	GPIO_TypeDef* 	port; // GPIO Port
+	uint16_t		pin;  // GPIO Pin
+}SPI_PINOUT;
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData);
+void SPI1_ResetSS(void);
+void SPI1_ResetSS(void);
+
+#endif

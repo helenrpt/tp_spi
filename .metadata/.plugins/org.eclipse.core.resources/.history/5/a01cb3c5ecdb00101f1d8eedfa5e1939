@@ -1,0 +1,19 @@
+#include <stdint.h>
+#include <stm32f446xx.h>
+#include "main.h"
+#include "gpio.h"
+
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData){
+
+//todo
+}
+
+void SPI1_ResetSS(void){
+	//todo
+}
+
+void SPI1_ResetSS(void){
+
+}

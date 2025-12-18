@@ -1,0 +1,17 @@
+11:51:20 **** Incremental Build of configuration Debug for project bus_spi ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"D:/RAPINAT/TP_SPI/bus_spi/Drivers" -I"D:/RAPINAT/TP_SPI/bus_spi/Drivers/CMSIS/Include" -I"D:/RAPINAT/TP_SPI/bus_spi/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/gpio.d" -MT"Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/gpio.o"
+arm-none-eabi-gcc -o "bus_spi.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RAPINAT\TP_SPI\bus_spi\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="bus_spi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: bus_spi.elf
+ 
+arm-none-eabi-size  bus_spi.elf 
+arm-none-eabi-objdump -h -S bus_spi.elf  > "bus_spi.list"
+   text	   data	    bss	    dec	    hex	filename
+   5792	     96	   1912	   7800	   1e78	bus_spi.elf
+Finished building: default.size.stdout
+ 
+Finished building: bus_spi.list
+ 
+
+11:51:21 Build Finished. 0 errors, 0 warnings. (took 1s.31ms)
+

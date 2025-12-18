@@ -1,0 +1,9 @@
+#ifndef BUS_SPI_H_
+#define BUS_SPI_H_
+
+
+uint8_t SPI1_TransmiReceive(uint8_t spiData);
+void SPI1_ResetSS(void);
+void SPI1_ResetSS(void);
+
+#endif
