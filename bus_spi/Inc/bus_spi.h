@@ -6,7 +6,7 @@ typedef struct {
 	uint16_t		pin;  // GPIO Pin
 }SPI_PINOUT;
 
-
+void SPI1_Init(void);
 uint8_t SPI1_TransmiReceive(uint8_t spiData);
 void SPI1_ResetSS(void);
 void SPI1_SetSS(void);

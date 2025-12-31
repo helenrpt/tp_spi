@@ -17,6 +17,7 @@ int main(void)
 	GPIO_Init();
 	USART2_Init();
 	SYSTICK_Init();
+	SPI1_Init();
 
 	while(1){
 		SYSTICK_Delay(2000);

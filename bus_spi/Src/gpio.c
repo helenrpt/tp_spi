@@ -11,11 +11,11 @@ void GPIO_Init(void){
 
 	GPIOC->MODER |= INPUT_MODE	<< 26;		// PC13 Input Push-Button
 
-	/*SPI1 init*/
-	GPIOA->MODER |= ALT_MODE <<10; //PA5 clock
-	GPIOA->MODER |= ALT_MODE << 12; //PA6 Alternate
-	GPIOA->MODER |= ALT_MODE << 14; //PA7 Alternate
-
+	/* SPI1 GPIO init */
+	GPIOA->MODER |= OUTPUT_MODE << 8;  // PA4 Output (CS)
+	GPIOA->MODER |= ALT_MODE << 10;    // PA5 Alternate (SCK)
+	GPIOA->MODER |= ALT_MODE << 12;    // PA6 Alternate (MISO)
+	GPIOA->MODER |= ALT_MODE << 14;    // PA7 Alternate (MOSI)
 
 	/* Clear AFRL bits for PA5, PA6, PA7 */
 	GPIOA->AFR[0] &= ~(GPIO_AFRL_AFSEL5_Msk | GPIO_AFRL_AFSEL6_Msk | GPIO_AFRL_AFSEL7_Msk);
@@ -24,15 +24,6 @@ void GPIO_Init(void){
 	GPIOA->AFR[0] |= (5U << GPIO_AFRL_AFSEL5_Pos)  // PA5 SCK
 	               | (5U << GPIO_AFRL_AFSEL6_Pos)  // PA6 MISO
 	               | (5U << GPIO_AFRL_AFSEL7_Pos); // PA7 MOSI
-
-	RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
-
-
-    SPI1->CR1 = SPI_CR1_MSTR       // Mode master
-              | SPI_CR1_SSM        // NSS logiciel activé
-              | SPI_CR1_SSI        // NSS interne à 1 (valide le master)
-              | SPI_CR1_BR_1       // Baudrate prescaler fPCLK/16
-              | SPI_CR1_SPE;       // Activation du SPI
 
 }
 

@@ -59,8 +59,8 @@ all: main-build
 main-build: bus_spi.elf secondary-outputs
 
 # Tool invocations
-bus_spi.elf bus_spi.map: $(OBJS) $(USER_OBJS) D:\RAPINAT\TP_SPI\bus_spi\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "bus_spi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\RAPINAT\TP_SPI\bus_spi\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="bus_spi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+bus_spi.elf bus_spi.map: $(OBJS) $(USER_OBJS) C:\Users\a511018\Desktop\USMB\ MASTER\SPI\tp_spi\bus_spi\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "bus_spi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\a511018\Desktop\USMB MASTER\SPI\tp_spi\bus_spi\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="bus_spi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
